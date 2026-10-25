@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --st-mat-bg: #1B3644;
+  --st-mat-grid: rgba(244, 241, 234, 0.12);
+  --st-paper-card: #FAF6EE;
+  --st-paper-aux: #F0EAE1;
+  --st-ink-primary: #1E242B;
+  --st-ink-muted: #5A6570;
+  --st-marker-primary: #E05A47;
+  --st-marker-ai: #7C5CBF;
+  --st-stamp-pow: #2A7B5C;
+  --st-tape-catchup: #E9B44C;
+  --st-chalk-weekend: #7FB3C8;
+  --st-red-pencil: #C93B3B;
+}
+
+/* 60fps Cutting Mat Grid (24px daily step, 168px weekly step) */
+.cutting-mat-grid {
+  background-color: var(--st-mat-bg);
+  background-image: 
+    linear-gradient(to right, var(--st-mat-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--st-mat-grid) 1px, transparent 1px),
+    linear-gradient(to right, rgba(244, 241, 234, 0.22) 1.5px, transparent 1.5px);
+  background-size: 24px 24px, 24px 24px, 168px 100%;
+  background-position: 0 0, 0 0, 0 0;
+}
+
+/* Hard Offset Shadows for Stationery feel */
+.stationery-card {
+  background-color: var(--st-paper-card);
+  color: var(--st-ink-primary);
+  border: 1.5px solid var(--st-ink-primary);
+  box-shadow: 3px 3px 0px #0F2029;
+  border-radius: 6px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stationery-card-aux {
+  background-color: var(--st-paper-aux);
+  color: var(--st-ink-primary);
+  border: 1.5px solid var(--st-ink-primary);
+  box-shadow: 2px 2px 0px #0F2029;
+  border-radius: 4px;
+}
+
+.stationery-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 4px 4px 0px #0F2029;
+}
+
+.stationery-card-active {
+  box-shadow: 6px 6px 0px #0F2029 !important;
+  transform: rotate(-0.5deg) scale(1.01) !important;
+}
+
+/* Masking Tape effect */
+.masking-tape {
+  background-color: var(--st-tape-catchup);
+  color: #1E242B;
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+  transform: rotate(-1deg);
+}
+
+/* Rubber Stamp for Proof of Work sealing */
+@keyframes stamp-bounce {
+  0% {
+    transform: scale(1.6) rotate(-15deg);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(0.95) rotate(-6deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1.0) rotate(-8deg);
+    opacity: 1;
+  }
+}
+
+.animate-stamp {
+  animation: stamp-bounce 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.rubber-stamp {
+  display: inline-block;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  font-family: var(--font-sketch);
+  font-weight: 700;
+  color: var(--st-stamp-pow);
+  border: 3px solid var(--st-stamp-pow);
+  border-radius: 6px;
+  letter-spacing: 2px;
+  mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.9) 70%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+/* Custom scrollbars matching cutting mat */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #142833;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2D4C5E;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3E6379;
+}

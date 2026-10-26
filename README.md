@@ -30,7 +30,7 @@ SketchTrack combina una línea de tiempo elástica y continua con una restricci�
 
 ### Requisitos Previos
 * **Python 3.11+** y [`uv`](https://github.com/astral-sh/uv) (o `pip`)
-* **Node.js 18+** y `npm`
+* **Node.js 18+** y [`pnpm`](https://pnpm.io/) (v10+)
 
 ### 1. Iniciar el Backend (FastAPI + SQLite)
 ```bash
@@ -46,11 +46,11 @@ uvicorn app.main:app --reload --port 8000
 ```
 El backend estará disponible en `http://localhost:8000` con documentación interactiva en `http://localhost:8000/docs`.
 
-### 2. Iniciar el Frontend (React + Vite)
+### 2. Iniciar el Frontend (React + Vite + pnpm)
 ```bash
 cd frontend
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 La aplicación abrirá en `http://localhost:5173`.
 
@@ -73,5 +73,5 @@ La aplicación abrirá en `http://localhost:5173`.
 cd backend && .venv/bin/pytest -v
 
 # Typecheck y bundle de producción (Frontend)
-cd frontend && npm run build
+cd frontend && pnpm run build
 ```
